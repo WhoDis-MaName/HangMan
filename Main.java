@@ -8,11 +8,13 @@ class Main {
             "substantial", "assorted", "eggnog", "curve", "sophisticated", "approval", "muddled", "sad", "savory", "embarrass", "banana", "assortment", "string", "apple", "toothpick", "worthy","big","girls","chicken","dog", "high", "period", "instrument", "sensitive", "water", "cotton", "item", "tin", "jury", "ambition", "fastidious", "cancer", "deficiency", "spite", "exemption", "disappoint", "manufacture", "tape", "pin", "negligencecde","harass"};
 
     public static void main(String[] args) {
+        //turns array of strings into Word objects
         ArrayList<Word> searchWords = new ArrayList<Word>();
         for (String i : words) {
             searchWords.add(new Word(i));
         }
-        System.out.println(searchWords);
+        //System.out.println(searchWords);
+
         Word answer = new Word("complicated"/*words[(int) (Math.random() * words.length)]*/);
         Computer testComputer = new Computer("guesser");
         System.out.println(answer);
@@ -20,6 +22,8 @@ class Main {
         for(char i:allCorrectGuesses){
             i='0';
         }
+
+        //First Guess
         char guess = testComputer.guess(searchWords, answer.length);
         System.out.println(answer + " contains " + answer.contains(guess, 0)+" of the letter "+guess);
         testComputer.answer(answer.contains(guess, 0), guess);

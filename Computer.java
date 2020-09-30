@@ -3,12 +3,17 @@ public class Computer {
     public String type = "";
     int knownLength = 0;
     ArrayList<Word> knownWords;
+    
+    //array to keep track of the other information about each letter
     char[] letters = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
             't', 'u', 'v', 'w', 'x', 'y', 'z' };
+    //stores the ammount of letters it knows are in the answer
     public int[] knownLetters ={-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
+    //turns to one if it was guessed so that the computer doesn't repeat guesses
     public int[] guessedLetters ={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
     public Computer(String type) {
+        //will be used when I add vs. guesser is coded now while executioner is run in main
         if (type.toLowerCase() == "guesser" || type.toLowerCase() == "guess") {
             this.type = "guesser";
         } else if (type.toLowerCase() == "executioner" || type.toLowerCase() == "word" || type.toLowerCase() == "writer") {
@@ -41,11 +46,15 @@ public class Computer {
                     possibleWords.add(i);    }
             }
         }
-        System.out.println();
+
+        //Prints the words it thinks might be the answer
+        /*System.out.println();
         System.out.print("Possible Words: ");
         for(Word i:possibleWords){
             System.out.print(i+"; ");
-        }
+        }*/
+
+        //this array stores the number of times each letter shows up
         int[] possibleGuess = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
         
         
@@ -91,19 +100,22 @@ public class Computer {
         return letters[finalGuess];
     }
 
+    //MUST be used for first guess. This gives the computer its initial information after the game started.
     public char guess(ArrayList<Word> words, int known) {
         knownLength = known;
         knownWords = words;
         return this.guess();
     }
 
+    //updates the computers knowledge after guess
     public void answer(int count, char letter){
         for(int i = 0; i < letters.length; i++){
             if(letters[i]==letter){
                 knownLetters[i]=count;
             }
         }
-        System.out.println();
+        //The following is used to keep track of what was working by printing information 
+        /*System.out.println();
         System.out.print("Guessed: ");
         for(int i:guessedLetters){
             System.out.print(i+", ");
@@ -113,6 +125,6 @@ public class Computer {
         for(int i:knownLetters){
             System.out.print(i+", ");
         }
-        System.out.println();
+        System.out.println();*/
     }
 }

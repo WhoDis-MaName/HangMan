@@ -3,6 +3,7 @@ public class Word{
     String name = "";
     public int length = 0;
     char[] letters;
+    
     public Word(String name){
         this.name = name;
         length = name.length();
@@ -11,6 +12,7 @@ public class Word{
             letters[i]=name.charAt(i);
         }
     }
+    //unused method meant to check if the character is in the word
     public boolean searchLetter(char check){
         for(char i:letters){
             if (i==check){
@@ -18,12 +20,11 @@ public class Word{
         }
         return false;
     }
-    public int getLength(){
-        return length;}
     
     public String toString(){
         return name +", "+ length;}
         
+    //returns the difference between the ammount in the word and the ammount that might be known. mostly used with 0 for count.
     public int contains(char i,int count){
         int ammount=0;
         for(char a:letters){
