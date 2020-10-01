@@ -32,7 +32,7 @@ public class Computer {
         for (Word i : knownWords) {
             boolean possible = true;
             boolean first = true;
-            if (i.getLength() == knownLength) {
+            if (i.length == knownLength) {
                 for (int a=0;a<letters.length;a++) {
                     if(i.contains(letters[a],knownLetters[a])!=0&&knownLetters[a]!=-1){
                         possible = false;
