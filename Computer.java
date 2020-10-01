@@ -12,19 +12,24 @@ public class Computer {
     //turns to one if it was guessed so that the computer doesn't repeat guesses
     public int[] guessedLetters ={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
-    public Computer(String type) {
+    public Computer(int type) {
         //will be used when I add vs. guesser is coded now while executioner is run in main
-        if (type.toLowerCase() == "guesser" || type.toLowerCase() == "guess") {
+        if (type == 1) {
             this.type = "guesser";
-        } else if (type.toLowerCase() == "executioner" || type.toLowerCase() == "word" || type.toLowerCase() == "writer") {
+            System.out.println("I am a guesser");
+        } else if (type ==0) {
             this.type = "executioner";
+            System.out.println("I am an answer");
         } else {
-            if (Math.random() >= .5) {
+            System.out.println("I am a random");
+            if (Math.random() >= .55) {
                 this.type = "guesser";
             } else {
                 this.type = "executioner";
             }
         }
+        System.out.println("This computer is a "+this.type);
+        System.out.println();
     }
 
     public char guess() {
@@ -32,7 +37,7 @@ public class Computer {
         for (Word i : knownWords) {
             boolean possible = true;
             boolean first = true;
-            if (i.getLength() == knownLength) {
+            if (i.length == knownLength) {
                 for (int a=0;a<letters.length;a++) {
                     if(i.contains(letters[a],knownLetters[a])!=0&&knownLetters[a]!=-1){
                         possible = false;
@@ -126,5 +131,10 @@ public class Computer {
             System.out.print(i+", ");
         }
         System.out.println();*/
+    }
+    
+    public Word makeWord(ArrayList<Word> words){
+        knownWords = words;
+        return words.get((int)(Math.random() * words.size()));
     }
 }

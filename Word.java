@@ -5,7 +5,7 @@ public class Word{
     char[] letters;
     
     public Word(String name){
-        this.name = name;
+        this.name = name.toLowerCase();
         length = name.length();
         letters = new char[length];
         for (int i = 0;i<length;i++){
